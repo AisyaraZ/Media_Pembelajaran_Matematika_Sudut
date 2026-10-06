@@ -1,0 +1,677 @@
+/* =========================================================
+   ANGLE ADVENTURE - DESIGN SYSTEM & GLOBAL STYLES
+   Konsep: Fun Learning & Colorful Interactive Classroom
+   Matematika Kelas 4 SD: Petualangan di Dunia Sudut
+   ========================================================= */
+
+:root {
+  --font-heading: 'Fredoka', cursive, system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Harmonious Bright Pastel & Adventure Palette */
+  --primary: #0d9488;
+  --primary-hover: #0f766e;
+  --primary-light: #ccfbf1;
+  --primary-dark: #115e59;
+
+  --secondary: #0284c7;
+  --secondary-hover: #0369a1;
+  --secondary-light: #e0f2fe;
+
+  --accent-amber: #f59e0b;
+  --accent-amber-light: #fef3c7;
+  --accent-coral: #f43f5e;
+  --accent-coral-light: #ffe4e6;
+  --accent-purple: #8b5cf6;
+  --accent-purple-light: #ede9fe;
+  --accent-green: #10b981;
+  --accent-green-light: #d1fae5;
+  --accent-sky: #38bdf8;
+
+  /* Neutral & Text */
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f0fdf4;
+  --text-title: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+
+  /* Soft Colorful Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 6px 14px -2px rgba(13, 148, 136, 0.12), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 14px 28px -4px rgba(13, 148, 136, 0.16), 0 6px 12px -2px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 12px 24px -2px rgba(13, 148, 136, 0.22);
+  --shadow-fun: 0 10px 25px -4px rgba(14, 165, 233, 0.2);
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 30px;
+  --radius-full: 9999px;
+}
+
+/* Reset & Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+  font-family: var(--font-body);
+  color: var(--text-body);
+  background-color: var(--bg-page);
+  /* Educational Classroom Subtle Pattern (Doodles of stars, dots, grids) */
+  background-image:
+    radial-gradient(#0d948818 1.5px, transparent 1.5px),
+    radial-gradient(#f59e0b18 1.5px, transparent 1.5px),
+    radial-gradient(#0284c718 1.5px, var(--bg-page) 1.5px);
+  background-size: 36px 36px, 72px 72px, 36px 36px;
+  background-position: 0 0, 18px 18px, 18px 18px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+  font-family: var(--font-heading);
+  color: var(--text-title);
+  letter-spacing: 0.02em;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================================
+   LAYOUT UTILITIES & SECTION TRANSITIONS
+   ========================================================= */
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 20px 54px;
+  animation: pageFadeSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pageFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .main-content {
+    padding: 12px 14px 40px;
+  }
+}
+
+/* Header & Nav */
+.header-bar {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 2px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.brand-badge:hover {
+  transform: scale(1.02);
+}
+
+.brand-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #0d9488, #0284c7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35);
+}
+
+.brand-text h1 {
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: var(--primary-dark);
+}
+
+.brand-text p {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =========================================================
+   BUTTONS (MICRO-INTERACTIONS & TACTILE PRESS)
+   ========================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.96rem;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12);
+  user-select: none;
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0d9488, #0f766e);
+  color: white;
+  box-shadow: 0 4px 0 #115e59;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0f766e, #134e4a);
+  box-shadow: 0 6px 14px rgba(13, 148, 136, 0.35);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: white;
+  box-shadow: 0 4px 0 #075985;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #0369a1, #0c4a6e);
+  box-shadow: 0 6px 14px rgba(2, 132, 199, 0.35);
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  box-shadow: 0 4px 0 #b45309;
+}
+
+.btn-accent:hover {
+  background: linear-gradient(135deg, #d97706, #92400e);
+  box-shadow: 0 6px 14px rgba(245, 158, 11, 0.35);
+}
+
+.btn-coral {
+  background: linear-gradient(135deg, #f43f5e, #e11d48);
+  color: white;
+  box-shadow: 0 4px 0 #be123c;
+}
+
+.btn-outline {
+  background: white;
+  color: var(--text-body);
+  border: 2px solid var(--border-color);
+  box-shadow: 0 3px 0 #cbd5e1;
+}
+
+.btn-outline:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.btn-lg {
+  padding: 14px 30px;
+  font-size: 1.15rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.18);
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================================
+   CARDS (PLAYFUL CLASSROOM ELEVATION)
+   ========================================================= */
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  border: 2px solid #e2e8f0;
+  box-shadow: var(--shadow-md);
+  padding: 24px;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 16px;
+    border-radius: var(--radius-lg);
+  }
+}
+
+.card-hero {
+  background: linear-gradient(145deg, #ffffff 0%, #f0fdf4 60%, #e0f2fe 100%);
+  border: 2.5px solid #a7f3d0;
+  box-shadow: var(--shadow-fun);
+}
+
+/* =========================================================
+   FULL-BODY MASCOT & SPEECH BUBBLE STYLING
+   ========================================================= */
+
+.mascot-fullbody-dialogue-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(135deg, #ffffff, #f0fdf4);
+  border: 2.5px solid #ccfbf1;
+  border-radius: var(--radius-xl);
+  padding: 18px 24px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 22px;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.mascot-fullbody-dialogue-container:hover {
+  border-color: #99f6e4;
+}
+
+.mascot-character-side {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mascot-tag-pill {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #0d9488;
+  background: #ccfbf1;
+  border: 1px solid #99f6e4;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.speech-bubble-fullbody {
+  position: relative;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  border: 2px solid #e2e8f0;
+  flex: 1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.speech-bubble-fullbody::before {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: 36px;
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-right: 11px solid #e2e8f0;
+}
+
+.speech-bubble-fullbody::after {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 37px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 9px solid #ffffff;
+}
+
+@media (max-width: 640px) {
+  .mascot-fullbody-dialogue-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .speech-bubble-fullbody::before,
+  .speech-bubble-fullbody::after {
+    display: none;
+  }
+}
+
+.mascot-name-badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #0f766e;
+  background: #ccfbf1;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.speech-text {
+  font-size: 0.96rem;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+/* =========================================================
+   ANIMATIONS & KEYFRAMES
+   ========================================================= */
+
+/* Mascot Blinking Eyes */
+@keyframes eyeBlink {
+
+  0%,
+  94%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  96% {
+    transform: scaleY(0.1);
+  }
+}
+
+.mascot-blinking-eyes {
+  transform-origin: center;
+  animation: eyeBlink 3.6s infinite ease-in-out;
+}
+
+/* Mascot Arm Wave */
+@keyframes waveArmRight {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(14deg);
+  }
+
+  75% {
+    transform: rotate(-10deg);
+  }
+}
+
+.mascot-arm-wave-right {
+  transform-origin: 108px 86px;
+  animation: waveArmRight 1.8s ease-in-out infinite;
+}
+
+/* Mascot Cheering Arms */
+@keyframes armsCheerHop {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.mascot-arms-cheer {
+  animation: armsCheerHop 1.2s ease-in-out infinite;
+}
+
+/* Mascot Idle Bounce */
+@keyframes mascotGentleBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.mascot-body-anim {
+  animation: mascotGentleBounce 2.8s ease-in-out infinite;
+}
+
+.mascot-hover-active {
+  transform: scale(1.04) translateY(-3px);
+  transition: transform 0.2s ease;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.45);
+  }
+
+  50% {
+    box-shadow: 0 0 0 12px rgba(13, 148, 136, 0);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 4s ease-in-out infinite 2s;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite;
+}
+
+/* =========================================================
+   MODALS
+   ========================================================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 100;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  background: white;
+  border-radius: var(--radius-xl);
+  max-width: 520px;
+  width: 100%;
+  padding: 26px;
+  border: 3px solid #e2e8f0;
+  box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.25);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================================================
+   PRINT CERTIFICATE RULES
+   ========================================================= */
+
+@media print {
+  @page {
+    size: landscape;
+    margin: 0.5cm;
+  }
+
+  body {
+    background: white !important;
+    background-image: none !important;
+  }
+
+  .header-bar,
+  .no-print {
+    display: none !important;
+  }
+
+  .main-content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .certificate-box {
+    box-shadow: none !important;
+    border: 8px double #0d9488 !important;
+    padding: 30px 24px !important;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY & RESPONSIVE BREAKPOINTS
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+
+  .btn-lg {
+    padding: 12px 22px;
+    font-size: 1.05rem;
+  }
+
+  .brand-text h1 {
+    font-size: 1rem;
+  }
+
+  .brand-text p {
+    font-size: 0.66rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
